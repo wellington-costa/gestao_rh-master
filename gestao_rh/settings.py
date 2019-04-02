@@ -26,8 +26,8 @@ SECRET_KEY = 'pw*&o&w0dm$6buy+rxui23oi8ybj+7k6d#q&96%_3v!a2#6*f2'
 DEBUG = True
 
 ALLOWED_HOSTS = [
-    '13.58.219.136',
-    'localhost',
+    '13.58.219.136:8080',
+
 ]
 
 
@@ -132,7 +132,7 @@ USE_TZ = True
 STATIC_URL = '/static/'
 
 STATICFILES_DIRS = [
-    os.path.join(BASE_DIR, "static/"),
+    os.path.join(BASE_DIR, "staticfiles"),
 
 ]
 
