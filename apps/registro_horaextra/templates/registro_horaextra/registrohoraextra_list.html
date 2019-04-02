@@ -1,0 +1,51 @@
+{% extends 'base.html' %}
+
+{% block main %}
+        <h1 align="center"> Banco de Horas</h1><br><br>
+            <div class="container">
+               <div class="row">
+                   <div class="col"><h2>Funcionario</h2></div>
+                   <div class="col"><h2>Motivo</h2></div>
+                   <div class="col"><h2>Qtd Horas</h2></div>
+                   <div class="col"><h2>Data</h2> </div>
+                   <div class="col"><h2>Ações</h2> </div>
+                   <br>
+               </div>
+
+                {% for hora_extra in object_list %}
+                    <div class="row">
+
+                       <div class="col"> {{ hora_extra.funcionario }}</div>
+
+                       <div class="col">
+                           {{ hora_extra }}
+                       </div>
+
+                       <div class="col"> {{ hora_extra.horas }}</div>
+
+                       <div class="col"> {{ hora_extra.data_hora }}</div>
+
+                       <div class="col">
+                          <div class="row">
+                            <div class="col">
+                                <a href="{% url 'update_hora_extra' hora_extra.id %}" class="btn btn-outline-info"> Editar</a>
+                            </div>
+                            <div class="col">
+                                <a href="{% url 'delete_hora_extra' hora_extra.id %}" class="btn btn-outline-danger"> Excluir</a>
+                            </div>
+                          </div>
+                       </div>
+                    </div>
+                    <br>
+                {% empty %}
+                    <div>
+                        <h3>Não existem registros</h3>
+                    </div>
+                {% endfor %}
+                    <br>
+                    <div>
+                        <a href="{% url 'create_hora_extra' %}" class="btn btn-outline-primary">Novo</a>
+                    </div>
+
+             </div>
+{% endblock %}

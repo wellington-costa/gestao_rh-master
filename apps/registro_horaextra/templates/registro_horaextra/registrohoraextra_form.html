@@ -1,0 +1,14 @@
+{% extends 'base.html' %}
+ {% load bootstrap %}
+{% block main %}
+
+ <div class="form-group">
+     {{object.funcionario}}
+   <form method="post" class="px-4 py-3">
+    {% csrf_token %}
+    {{ form | bootstrap }}
+       <button type="submit" class="btn btn-outline-success">Salvar</button>
+   </form>
+ </div>
+
+{% endblock %}

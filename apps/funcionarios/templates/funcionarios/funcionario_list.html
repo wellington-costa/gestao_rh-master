@@ -1,0 +1,29 @@
+{% extends 'base.html' %}
+
+{% block main %}
+        <h1>Funcionarios</h1>
+            <div class="container">
+
+                {% for funcionario in object_list %}
+                    <div class="row">
+                       <div class="col">
+                        <a href="{% url 'update_funcionario' funcionario.id %}"> {{ funcionario }}</a>
+                       </div>
+                       <div class="col-sm">
+                        <a href="{% url 'delete_funcionario' funcionario.id %}" class="btn btn-outline-danger btn-sm">Excluir</a>
+                       </div>
+                    </div>
+                    <br>
+                {% empty %}
+                    <div>
+                        <h3>Não existem registros</h3>
+                    </div>
+                {% endfor %}
+                    <br>
+                    <div>
+                        <a href="{% url 'create_funcionario' %}" class="btn btn-outline-info">Novo</a>
+                    </div>
+
+             </div>
+{% endblock %}
+
