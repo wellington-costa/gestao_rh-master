@@ -2,18 +2,50 @@
  {% load bootstrap %}
 {% block main %}
 
- <div class="form-group">
+ <div class="form-group container">
      {{object}}
    <form method="post" class="px-4 py-3">
     {% csrf_token %}
     {{ form | bootstrap }}
-       <button type="submit" class="btn btn-outline-success">Salvar</button>
+       <button type="submit" class="btn btn-outline-success">Salvar</button><br>
+
+
+     <br>
+     <div class="col border"  >
+         <h3>Documentos</h3>
+     <div class="row">
+        {% for documento in object.documentos_set.all %}
+            <div>
+                <a href="{{ documento.arquivo.url }}" class="btn btn-light">{{ documento.descricao }}</a>
+            </div>
+
+        {% endfor %}
+         <div class="col-sm-1" >
+        <a href="{% url 'create_documento' object.id %}" class="btn btn-outline-success">
+            +
+        </a>
+
+      </div>
+
+
+     </div>
+         <br>
+     </div>
+      <br>
+     <div class=" col border" >
+         <h3>Banco de horas</h3>
+         <div class="row">
+            <div class="col-sm-3">
+                <h5>Total: {{object.total_hora_extra}}</h5>
+            </div>
+            <div class="col">
+                <a href="{% url 'list_hora_extra' %}" class="btn btn-info">Listar</a>
+            </div>
+
+         </div>
+        <br>
+     </div>
    </form>
-    <br>
-   {% if object %}
-     <a href="{% url 'create_documento' object.id %}" class="btn btn-success">
-      Adicionar documento
-     </a>
  </div>
-   {% endif %}
+
 {% endblock %}

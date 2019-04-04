@@ -1,9 +1,12 @@
 {% extends 'base.html' %}
 
 {% block main %}
+
+<div align="center" class="text-center form-group border">
   <form method="post">
       {% csrf_token %}
       {{ form.as_p }}
       <button type="submit">Login</button>
   </form>
+</div>
 {% endblock %}

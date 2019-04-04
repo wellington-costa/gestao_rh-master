@@ -13,6 +13,16 @@ class ListHoraExtra(ListView):
         empresa_logada = self.request.user.funcionario.empresa
         queryset = RegistroHoraExtra.objects.filter(funcionario__empresa=empresa_logada)
         return queryset
+
+class ListHoraExtraFuncionario(ListView):
+    model = RegistroHoraExtra
+    def get_queryset(self):
+        funcionario = self.request.user.objects.funcionario.id
+        queryset = RegistroHoraExtra.objects.filter(funcionario__id=funcionario)
+        return queryset
+
+
+
 class UpdateHoraExtra(UpdateView):
     model = RegistroHoraExtra
     form_class = RegistroHoraExtraForm
