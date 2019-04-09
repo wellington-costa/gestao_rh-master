@@ -9,6 +9,7 @@ class RegistroHoraExtra(models.Model):
     funcionario = models.ForeignKey(Funcionario, on_delete=models.PROTECT)
     horas = models.DecimalField(max_digits=5, decimal_places=2)
     data_hora = models.DateField(auto_now_add=False, auto_now=False, default=date.today)
+    marcada = models.BooleanField(default=False)
 
 
     def __str__(self):

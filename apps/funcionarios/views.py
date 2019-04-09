@@ -30,6 +30,8 @@ class UpadteFuncionarios(UpdateView):
      model = Funcionario
      fields = ['nome', 'departamento']
 
+
+
 class DeleteFuncionario(DeleteView):
      model = Funcionario
      success_url = reverse_lazy('list_funcionarios')
